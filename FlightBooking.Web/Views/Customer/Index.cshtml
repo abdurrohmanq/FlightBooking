@@ -1,0 +1,53 @@
+﻿@using FlightBooking.Service.DTOs.Customers;
+
+@model IEnumerable<CustomerResultDto>
+
+<section class="vh-100 bg-image"
+         style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPsDkU6GC09gXJdI2iiSWpgZAKs7I66_9hQ3gfu19TiO2PHfb5uPsoFCVoy9fmGfLsAXI&usqp=CAU');">
+    <table class="table table-bordered table-hover mt-4">
+        <thead>
+            <tr>
+                @{
+                    var customer = Model.FirstOrDefault();
+                }
+                <th>@Html.DisplayNameFor(item => customer.Id)</th>
+                <th>@Html.DisplayNameFor(item => customer.FirstName)</th>
+                <th>@Html.DisplayNameFor(item => customer.LastName)</th>
+                <th>@Html.DisplayNameFor(item => customer.PhoneNumber)</th>
+                <th>@Html.DisplayNameFor(item => customer.Email)</th>
+                <th>@Html.DisplayNameFor(item => customer.PassportNumber)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @Html.DisplayFor(i => item.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.LastName)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.PhoneNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.PassportNumber)
+                    </th>
+                    <th>
+                        <form asp-controller="Flights" method="get">
+                            <button class="btn btn-success gradient-custom-4 text-body" asp-action="Edit" asp-route-id="@item.Id">Edit</button>
+                            <button class="btn btn-primary" asp-action="Detail" asp-route-id="@item.Id">View and Detail</button>
+                        </form>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

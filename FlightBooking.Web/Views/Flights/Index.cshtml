@@ -1,0 +1,56 @@
+@using FlightBooking.Service.DTOs.Flights;
+@model IEnumerable<FlightResultDto>
+
+<section class="vh-100 bg-image"
+         style="background-image: url('https://www.libertytravel.com/sites/default/files/styles/full_size/public/flight-hero.jpg?itok=hhscHSGZ');">
+    <table class="table table-bordered table-hover mt-4">
+        <thead>
+            <tr>
+                @{
+                    var flight = Model.FirstOrDefault();
+                }
+                <th>@Html.DisplayNameFor(item => flight.Id)</th>
+                <th>@Html.DisplayNameFor(item => flight.DepartureCity)</th>
+                <th>@Html.DisplayNameFor(item => flight.ArrivalCity)</th>
+                <th>@Html.DisplayNameFor(item => flight.DepartureTime)</th>
+                <th>@Html.DisplayNameFor(item => flight.ArrivalTime)</th>
+                <th>@Html.DisplayNameFor(item => flight.Price)</th>
+                <th>@Html.DisplayNameFor(item => flight.AvailableSeats)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @Html.DisplayFor(i => item.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.DepartureCity)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.ArrivalCity)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.DepartureTime)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.ArrivalTime)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.Price)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.AvailableSeats)
+                    </th>
+                    <th>
+                        <form asp-controller="Flights" method="get">
+                            <button class="btn btn-success gradient-custom-4 text-body" asp-action="Edit" asp-route-id="@item.Id">Edit</button>
+                            <button class="btn btn-primary" asp-action="Detail" asp-route-id="@item.Id">View and Booking</button>
+                        </form>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

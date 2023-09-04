@@ -1,0 +1,47 @@
+﻿@using FlightBooking.Service.DTOs.Bookings;
+
+@model IEnumerable<BookingResultDto>
+<section class="vh-100 bg-image"
+         style="background-image: url('https://www.libertytravel.com/sites/default/files/styles/full_size/public/flight-hero.jpg?itok=hhscHSGZ');">
+    <table class="table table-bordered table-hover mt-4">
+        <thead>
+            <tr>
+                @{
+                    var booking = Model.FirstOrDefault();
+                }
+                <th>@Html.DisplayNameFor(item => booking.Id)</th>
+                <th>@Html.DisplayNameFor(item => booking.Flight)</th>
+                <th>@Html.DisplayNameFor(item => booking.Customer)</th>
+                <th>@Html.DisplayNameFor(item => booking.BookingDate)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @Html.DisplayFor(i => item.Id)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.Flight.DepartureCity)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.Flight.ArrivalCity)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.Customer.FirstName)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(i => item.BookingDate)
+                    </th>
+                    <th>
+                        <form asp-controller="Flights" method="get">
+                            <button class="btn btn-success gradient-custom-4 text-body" asp-action="Edit" asp-route-id="@item.Id">Edit</button>
+                            <button class="btn btn-primary" asp-action="Detail" asp-route-id="@item.Id">Detail</button>
+                        </form>
+                    </th>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

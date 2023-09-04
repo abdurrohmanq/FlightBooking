@@ -1,0 +1,41 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@*<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<!DOCTYPE html>
+
+<head>
+    <title>Input group Multiple inputs</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+          crossorigin="anonymous">
+</head>
+
+*@
+<section class="vh-100 bg-image"
+         style="background-image: url('https://www.surffares.com/travelguru/wp-content/uploads/2022/05/1595972233_1594320268_shutterstock_699697081.jpg');">
+<body>
+    <form asp-controller="Flights" asp-action="SearchFlight" method="post">
+    <div class="container text-center mt-5">
+                <div class="input-group mb-3">
+                    <input type="text" id="DepartureCity" name="DepartureCity" class="form-control"
+                           placeholder="From">
+                    <input type="text" id="ArrivalCity" name="ArrivalCity" class="form-control"
+                           placeholder="To">
+                    <input type="datetime-local" id="DepartureTime" name="DepartureTime" class="form-control"
+                           placeholder="Select Date">
+                    <input type="number" id="NumberOfPassengers" name="NumberOfPassengers" class="form-control"
+                           placeholder="Passengers">
+                    <button type="submit" class="btn btn-success" asp-controller="Flights" asp-action="SearchFlight">Search Ticket</button>
+                </div>
+    </div>
+    </form>
+</body>
+</section>

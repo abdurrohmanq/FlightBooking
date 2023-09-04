@@ -1,0 +1,68 @@
+﻿@using FlightBooking.Domain.Entities.Flights;
+@model Flight
+
+<section class="vh-100 bg-image"
+         style="background-image: url('https://www.shutterstock.com/shutterstock/photos/2303693777/display_1500/stock-vector-book-your-flight-advertising-template-for-mobile-application-purchase-of-air-tickets-over-phone-2303693777.jpg');">
+    <div class="container mt-lg-5">
+        <div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <h2>Flight Details</h2>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-hover mt-2">
+        <thead>
+            <tr>
+                @{
+                    var flight = Model;
+                }
+                <th>@Html.DisplayNameFor(item => flight.Id)</th>
+                <th>@Html.DisplayNameFor(item => flight.DepartureCity)</th>
+                <th>@Html.DisplayNameFor(item => flight.ArrivalCity)</th>
+                <th>@Html.DisplayNameFor(item => flight.DepartureTime)</th>
+                <th>@Html.DisplayNameFor(item => flight.ArrivalTime)</th>
+                <th>@Html.DisplayNameFor(item => flight.Price)</th>
+                <th>@Html.DisplayNameFor(item => flight.AvailableSeats)</th>
+                <th>@Html.DisplayNameFor(item => flight.DepartureAirport)</th>
+                <th>@Html.DisplayNameFor(item => flight.ArrivalAirport)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>
+                    @Html.DisplayFor(i => flight.Id)
+                </th>
+                <th>
+                    @Html.DisplayFor(i => flight.DepartureCity)
+                </th>
+                <th>
+                    @Html.DisplayFor(i => flight.ArrivalCity)
+                </th>
+                <th>
+                    @Html.DisplayFor(i => flight.DepartureTime)
+                </th>
+                <th>
+                    @Html.DisplayFor(i => flight.ArrivalTime)
+                </th>
+                <th>
+                    @Html.DisplayFor(i => flight.Price)
+                </th>
+                <th>
+                    @Html.DisplayFor(i => flight.AvailableSeats)
+                </th>
+                <th>
+                    @Html.DisplayFor(i => flight.DepartureAirport.Name)
+                </th>
+                <th>
+                    @Html.DisplayFor(i => flight.ArrivalAirport.Name)
+                </th>
+                <th>
+                    <form asp-controller="Flights" method="get">
+                        <button class="btn btn-primary" asp-action="Index">Back</button>
+                    </form>
+                </th>
+            </tr>
+        </tbody>
+    </table>
+    </section>
